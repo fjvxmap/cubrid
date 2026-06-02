@@ -327,7 +327,8 @@ jobs:
                         mkdir -p \$CCACHE_DIR
                         ccache --max-size=5G
                         ccache -z
-                        scl enable devtoolset-8 -- /entrypoint.sh build
+                        # POC: shell debug-build measurement (throwaway, do not merge)
+                        scl enable devtoolset-8 -- /entrypoint.sh build -m debug
                         ccache -s
                   - save_cache:
                       key: ccache-global-v1-{{ checksum "CMakeLists.txt" }}
